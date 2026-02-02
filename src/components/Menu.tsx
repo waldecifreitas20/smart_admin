@@ -1,12 +1,12 @@
 export function Menu() {
     return (
-        <aside>
+        <aside className="bg-white border-t border-purple-500 px-4 fixed bottom-0 w-full">
             <nav>
-                <ul>
-                    <li>Dashboard</li>
-                    <li>Colaboradores</li>
-                    <li>Solicitações</li>
-                    <li>Sair</li>
+                <ul className="flex justify-between leading-16">
+                    <li className="hover:text-purple-500">Dashboard</li>
+                    <li className="hover:text-purple-500">Colaboradores</li>
+                    <li className="hover:text-purple-500">Solicitações</li>
+                    <li className="hover:text-purple-500">Sair</li>
                 </ul>
             </nav>
         </aside>

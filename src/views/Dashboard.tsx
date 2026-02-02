@@ -4,8 +4,8 @@ import { SearchBar } from "../components/SearchBar";
 export function Dashboard() {
     const dashboardStats = [
         {icon:<Activity size={16} />, label: "Cobertura", value: "100%" },
-        {icon: <UserRoundX size={16} />, label: "Indiponíveis", value: "100%" },
-        {icon: <ShieldCheck size={16} />, label: "Ativos", value: "100%" },
+        {icon: <UserRoundX size={16} />, label: "Indiponíveis", value: "4" },
+        {icon: <ShieldCheck size={16} />, label: "Ativos", value: "35" },
     ];
 
     return (

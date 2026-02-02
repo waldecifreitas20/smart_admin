@@ -1,8 +1,12 @@
+import { Menu } from "./components/Menu";
+import { Dashboard } from "./views/Dashboard";
+
 function App() {
 
   return (
     <>
-      <h1 className="bg-red-500 text-4xl">HELLO, WORLD!</h1>
+     <Menu/>  
+     <Dashboard/> 
     </>
   )
 }

@@ -23,10 +23,10 @@ export function Dashboard() {
 				{dashboardStats.map((stat) => (
 					<div key={stat.label}
 						className="
-                    bg-white p-2 rounded-lg 
-                    shadow-sm border border-slate-100
-                    flex flex-col items-start justify-bewteen h-full
-                    ">
+						bg-white p-2 rounded-lg 
+						shadow-sm border border-slate-100
+						flex flex-col items-start justify-bewteen h-full
+						">
 						<h2 className="text-sm text-slate-600 block h-full flex items-center gap-2">{stat.label} {stat.icon}</h2>
 						<p className="text-2xl text-purple-500 font-bold mt-2">{stat.value}</p>
 					</div>

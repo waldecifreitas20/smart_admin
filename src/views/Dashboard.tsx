@@ -1,6 +1,7 @@
 import { Activity, ShieldCheck, UserRoundX } from "lucide-react";
 import { SearchBar } from "../components/SearchBar";
 import { WeekController } from "../components/WeekController";
+import { TeamSelector } from "../components/TeamSelector";
 
 export function Dashboard() {
 	const dashboardStats = [
@@ -35,7 +36,7 @@ export function Dashboard() {
 
 			<div>
 				<WeekController />
-
+				<TeamSelector />
 
 			</div>
 		</>

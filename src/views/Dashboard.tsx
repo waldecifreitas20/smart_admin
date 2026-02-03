@@ -1,7 +1,8 @@
-import { Activity, ShieldCheck, UserRoundX } from "lucide-react";
+import { Activity, ShieldCheck, UserRoundX, WandSparkles } from "lucide-react";
 import { SearchBar } from "../components/SearchBar";
 import { WeekController } from "../components/WeekController";
 import { TeamSelector } from "../components/TeamSelector";
+import { PrimaryButton } from "../components/PrimaryButton";
 
 export function Dashboard() {
 	const dashboardStats = [
@@ -34,10 +35,15 @@ export function Dashboard() {
 				))}
 			</div>
 
-			<div>
+			<div className="mt-10">
 				<WeekController />
 				<TeamSelector />
 
+				<div>
+					<PrimaryButton>
+						<WandSparkles size={16} /> Gerar Escalas
+					</PrimaryButton>
+				</div>
 			</div>
 		</>
 	);

@@ -12,25 +12,21 @@ export function DayController() {
 
 
   return (
-    <div className="flex max-w-screen gap-3 overflow-x-scroll">
-      {dates.map((date, i) => {
+    <div className="flex font-bold max-w-screen gap-2 overflow-x-scroll">
+      {dates.map((date) => {
         const isActive = activeDate.getDate() === date.getDate();
         return (
           <div
-          onClick={() => setActiveDate(date)}
+            onClick={() => setActiveDate(date)}
             className={`
-          ${isActive ?
-                "bg-purple-600 text-white" :
-                "text-slate-500 border-slate-200 bg-white hover:bg-purple-50"
-              } 
-          block w-[80px] shrink-0
-          border
-          cursor-pointer
-          py-6 text-center rounded-xl 
-          text-purple-600 
+            ${isActive ? "bg-purple-600 text-white" : "text-slate-400 border-slate-200 bg-white hover:bg-purple-50"} 
+            block w-[60px] shrink-0
+            border
+            cursor-pointer
+            py-4 text-center rounded-xl  
           `}>
-            <p className={`uppercase text-xs`}>{date.toLocaleDateString("pt-BR", { weekday: "short" })}</p>
-            <p className="text-2xl font-bold">{date.getDay() + 1}</p>
+          <p className={`uppercase text-xs`}>{date.toLocaleDateString("pt-BR", { weekday: "short" }).replace(".", "")}</p>
+            <p className="text-2xl">{date.getDate()}</p>
           </div>
         )
       })}

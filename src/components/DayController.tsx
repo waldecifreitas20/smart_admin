@@ -1,14 +1,25 @@
 import { useState } from "react";
 
-export function DayController() {
-  const dateStart = new Date(2026, 1, 1);
-  const [activeDate, setActiveDate] = useState(dateStart);
+
+interface DayControllerProps {
+  startDate: Date;
+  onSelectDate: (date: Date) => void;
+}
+
+export function DayController(props: DayControllerProps) {
+  const [activeDate, setActiveDate] = useState(props.startDate);
 
   const dates = Array.from({ length: 7 }, (_, i) => {
-    const date = new Date(dateStart);
-    date.setDate(dateStart.getDate() + i);
+    const date = new Date(props.startDate);
+    date.setDate(props.startDate.getDate() + i);
     return date;
   });
+
+
+  function handleDateSelect(date: Date) {
+    setActiveDate(date);
+    props.onSelectDate(date);
+  }
 
 
   return (
@@ -17,7 +28,7 @@ export function DayController() {
         const isActive = activeDate.getDate() === date.getDate();
         return (
           <div
-            onClick={() => setActiveDate(date)}
+            onClick={() => handleDateSelect(date)}
             className={`
             ${isActive ? "bg-purple-600 text-white" : "text-slate-400 border-slate-200 bg-white hover:bg-purple-50"} 
             block w-[60px] shrink-0
@@ -25,7 +36,9 @@ export function DayController() {
             cursor-pointer
             py-4 text-center rounded-xl  
           `}>
-          <p className={`uppercase text-xs`}>{date.toLocaleDateString("pt-BR", { weekday: "short" }).replace(".", "")}</p>
+            <p className={`uppercase text-xs`}>
+              {date.toLocaleDateString("pt-BR", { weekday: "short" }).replace(".", "")}
+            </p>
             <p className="text-2xl">{date.getDate()}</p>
           </div>
         )

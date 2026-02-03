@@ -1,10 +1,26 @@
 import { Activity, ShieldCheck, UserRoundX, WandSparkles } from "lucide-react";
 import { SearchBar } from "../components/SearchBar";
-import { WeekController } from "../components/WeekController";
 import { TeamSelector } from "../components/TeamSelector";
 import { PrimaryButton } from "../components/PrimaryButton";
 import { OutlinedButton } from "../components/OutlinedButton";
 import { DayController } from "../components/DayController";
+import { useState } from "react";
+import { WorkerTile } from "../components/WorkerTile";
+
+
+const workers = [
+	{ name: "Waldeci", team: "eCall", shiftIn: "22:35", shiftOut: "06:00" },
+	{ name: "Waldeci", team: "eCall", shiftIn: "22:35", shiftOut: "06:00" },
+	{ name: "Waldeci", team: "eCall", shiftIn: "22:35", shiftOut: "06:00" },
+	{ name: "Waldeci", team: "eCall", shiftIn: "22:35", shiftOut: "06:00" },
+	{ name: "Waldeci", team: "eCall", shiftIn: "22:35", shiftOut: "06:00" },
+	{ name: "Waldeci", team: "eCall", shiftIn: "22:35", shiftOut: "06:00" },
+	{ name: "Waldeci", team: "eCall", shiftIn: "22:35", shiftOut: "06:00" },
+	{ name: "Waldeci", team: "eCall", shiftIn: "22:35", shiftOut: "06:00" },
+	{ name: "Waldeci", team: "eCall", shiftIn: "22:35", shiftOut: "06:00" },
+	{ name: "Waldeci", team: "eCall", shiftIn: "22:35", shiftOut: "06:00" },
+	{ name: "Waldeci", team: "eCall", shiftIn: "22:35", shiftOut: "06:00" },
+];
 
 export function Dashboard() {
 	const dashboardStats = [
@@ -13,7 +29,7 @@ export function Dashboard() {
 		{ icon: <ShieldCheck size={16} />, label: "Ativos", value: "35" },
 	];
 
-
+	const [selectedDate, setSelectedDate] = useState(new Date(2026, 1, 1));
 
 	return (
 		<>
@@ -38,18 +54,29 @@ export function Dashboard() {
 			</div>
 
 			<div className="mt-10 mb-6">
-				<DayController />
+				<DayController startDate={selectedDate} onSelectDate={setSelectedDate} />
 			</div>
 
 			<TeamSelector />
 
 			<div className="flex gap-2 mt-6">
-
 				<PrimaryButton>
 					<WandSparkles size={16} /> Gerar Escalas
 				</PrimaryButton>
 
 				<OutlinedButton>Resetar</OutlinedButton>
+			</div>
+
+
+			<p className="text-sm text-slate-400 mt-10 font-semibold">
+				EQUIPE EM {selectedDate.toLocaleDateString("pt-BR", { day: "numeric", month: "numeric" })}
+			</p>
+
+			<div className="flex flex-col gap-2 mt-2">
+				{workers.map((worker, index) => (
+					<WorkerTile key={index} worker={worker} />
+				))}
+
 			</div>
 		</>
 	);

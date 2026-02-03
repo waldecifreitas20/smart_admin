@@ -18,7 +18,7 @@ export function WorkerTile(props: WorkerTileProps) {
     <div className="
     bg-white cursor-pointer
     border border-slate-200 
-    p-3 rounded-xl shadow-lg shadow-slate-200
+    p-3 rounded-xl
     flex items-center gap-4 
     ">
       <span

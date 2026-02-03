@@ -4,8 +4,9 @@ import { TeamSelector } from "../components/TeamSelector";
 import { PrimaryButton } from "../components/PrimaryButton";
 import { OutlinedButton } from "../components/OutlinedButton";
 import { DayController } from "../components/DayController";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { WorkerTile } from "../components/WorkerTile";
+import { WeekController } from "../components/WeekController";
 
 
 const workers = [
@@ -23,13 +24,14 @@ const workers = [
 ];
 
 export function Dashboard() {
+	const initialDate = useRef(new Date(2026, 1, 1));
 	const dashboardStats = [
 		{ icon: <Activity size={16} />, label: "Cobertura", value: "100%" },
 		{ icon: <UserRoundX size={16} />, label: "Indiponíveis", value: "4" },
 		{ icon: <ShieldCheck size={16} />, label: "Ativos", value: "35" },
 	];
 
-	const [selectedDate, setSelectedDate] = useState(new Date(2026, 1, 1));
+	const [selectedDate, setSelectedDate] = useState(initialDate.current);
 
 	return (
 		<>
@@ -72,7 +74,7 @@ export function Dashboard() {
 				EQUIPE EM {selectedDate.toLocaleDateString("pt-BR", { day: "numeric", month: "numeric" })}
 			</p>
 
-			<div className="flex flex-col gap-2 mt-2">
+			<div className="flex flex-col gap-4 mt-2">
 				{workers.map((worker, index) => (
 					<WorkerTile key={index} worker={worker} />
 				))}

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 
 interface DayControllerProps {
@@ -7,11 +7,12 @@ interface DayControllerProps {
 }
 
 export function DayController(props: DayControllerProps) {
+  const startDate = useRef(props.startDate);
   const [activeDate, setActiveDate] = useState(props.startDate);
 
-  const dates = Array.from({ length: 7 }, (_, i) => {
-    const date = new Date(props.startDate);
-    date.setDate(props.startDate.getDate() + i);
+  const dates = Array.from({ length: 30 }, (_, i) => {
+    const date = new Date(startDate.current);
+    date.setDate(startDate.current.getDate() + i);
     return date;
   });
 
@@ -25,7 +26,7 @@ export function DayController(props: DayControllerProps) {
   return (
     <div className="flex font-bold max-w-screen gap-2 overflow-x-scroll">
       {dates.map((date) => {
-        const isActive = activeDate.getDate() === date.getDate();
+        const isActive = activeDate.toISOString() === date.toISOString();
         return (
           <div
             onClick={() => handleDateSelect(date)}
@@ -36,10 +37,13 @@ export function DayController(props: DayControllerProps) {
             cursor-pointer
             py-4 text-center rounded-xl  
           `}>
-            <p className={`uppercase text-xs`}>
+            <p className={`capitalize text-xs`}>
               {date.toLocaleDateString("pt-BR", { weekday: "short" }).replace(".", "")}
             </p>
             <p className="text-2xl">{date.getDate()}</p>
+            <p className={`capitalize text-xs`}>
+              {date.toLocaleDateString("pt-BR", { month: "short" }).replace(".", "")}
+            </p>
           </div>
         )
       })}

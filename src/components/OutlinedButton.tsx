@@ -11,8 +11,8 @@ export function OutlinedButton(props: OutlinedButtonProps) {
       flex items-center justify-center 
       gap-2 text-sm
        
-      px-4 py-3 w-full
-      rounded-md 
+      px-4 py-2 w-full
+      rounded-lg shadow-lg shadow-purple-200/50
       cursor-pointer
       hover:bg-purple-200 transition-all
     ">

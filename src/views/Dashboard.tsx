@@ -18,12 +18,12 @@ export function Dashboard() {
 	return (
 		<>
 			<SearchBar />
-			<div className="mt-12">
+			<div className="mt-8">
 				<h1 className="text-2xl text-slate-950 font-bold">Painel de Escalas</h1>
 				<p className="text-sm">Visualize e gerencie as escalas dos colaboradores ativos</p>
 			</div>
 
-			<div className="grid grid-cols-3 gap-2 mt-8">
+			<div className="grid grid-cols-3 gap-2 mt-4">
 				{dashboardStats.map((stat) => (
 					<div key={stat.label}
 						className="
@@ -37,12 +37,14 @@ export function Dashboard() {
 				))}
 			</div>
 
-			<div className="mt-10">
+			<div className="mt-10 mb-6">
 				<DayController />
-				<TeamSelector />
 			</div>
 
-			<div className="">
+			<TeamSelector />
+
+			<div className="flex gap-2 mt-6">
+
 				<PrimaryButton>
 					<WandSparkles size={16} /> Gerar Escalas
 				</PrimaryButton>

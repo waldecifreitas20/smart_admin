@@ -6,10 +6,15 @@ export const EmployeeTeam = {
 } as const;
 
 export type Employee = {
-  edv: string; 
+  edv: string;
   name: string;
   team: EmployeeTeam;
-  shiftIn: string;
-  shiftOut:string;
+  shift: ShiftPeriod;
+  customShift?: {
+    in: string;
+    out: string;
+  }
   daysOff: Date[];
 }
+
+export type ShiftPeriod = "T1" | "T2" | "T3" | "Custom";

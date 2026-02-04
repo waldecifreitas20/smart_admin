@@ -1,8 +1,21 @@
 import { useState } from "react";
+import type { EmployeeTeam } from "../types/Employee";
 
-export function TeamSelector() {
-  const teams = ["eCall", "RSA"];
+
+interface TeamSelectorProps {
+  onSelectTeam: (team: EmployeeTeam) => void;
+}
+
+
+export function TeamSelector(props: TeamSelectorProps) {
+  const teams: EmployeeTeam[] = ["eCall", "RSA"];
   const [selectedTeam, setSelectedTeam] = useState(teams[0]);
+
+
+  function handleSelectTeam(team: EmployeeTeam) {
+    setSelectedTeam(team);
+    props.onSelectTeam(team);
+  }
 
   return (
     <div
@@ -11,11 +24,9 @@ export function TeamSelector() {
       font-medium items-center 
       mt-4 w-full gap-2
       ">
-      <span className="text-sm mr-2 px-2 hidden">Equipe:</span>
-
       {teams.map((team) => (
-        <span
-          onClick={() => setSelectedTeam(team)}
+        <button
+          onClick={() => handleSelectTeam(team)}
           key={team}
           className={`
           block
@@ -26,7 +37,7 @@ export function TeamSelector() {
           ${team == selectedTeam ? "bg-purple-600 text-white border-purple-600 shadow-xl" : "text-slate-300"}
           `}>
           {team}
-        </span>
+        </button>
       ))}
 
     </div>

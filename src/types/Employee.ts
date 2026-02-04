@@ -1,3 +1,5 @@
+import type { ShiftPeriod } from "./Shift";
+
 export type EmployeeTeam = "eCall" | "RSA";
 
 export const EmployeeTeam = {
@@ -10,11 +12,5 @@ export type Employee = {
   name: string;
   team: EmployeeTeam;
   shift: ShiftPeriod;
-  customShift?: {
-    in: string;
-    out: string;
-  }
   daysOff: Date[];
 }
-
-export type ShiftPeriod = "T1" | "T2" | "T3" | "Custom";

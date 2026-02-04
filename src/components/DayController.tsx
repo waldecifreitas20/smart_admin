@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useCallback, useState } from "react";
 
 
 interface DayControllerProps {
@@ -7,14 +7,21 @@ interface DayControllerProps {
 }
 
 export function DayController(props: DayControllerProps) {
-  const startDate = useRef(props.startDate);
   const [activeDate, setActiveDate] = useState(props.startDate);
 
-  const dates = Array.from({ length: 30 }, (_, i) => {
-    const date = new Date(startDate.current);
-    date.setDate(startDate.current.getDate() + i);
-    return date;
-  });
+  const dates = useCallback(generateDates, [activeDate])();
+
+  function generateDates(): Date[] {
+    const _dates: Date[] = [];
+
+    for (let i = -3; i <= 3; i++) {
+      const date = new Date(props.startDate);
+      date.setDate(date.getDate() + i);
+      _dates.push(date);
+    }
+
+    return _dates;
+  }
 
 
   function handleDateSelect(date: Date) {

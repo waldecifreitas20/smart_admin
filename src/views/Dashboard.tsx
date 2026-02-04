@@ -6,21 +6,21 @@ import { OutlinedButton } from "../components/OutlinedButton";
 import { DayController } from "../components/DayController";
 import { useRef, useState } from "react";
 import { WorkerTile } from "../components/WorkerTile";
-import { WeekController } from "../components/WeekController";
+import type { Worker } from "../types/Worker";
 
 
-const workers = [
-	{ name: "Waldeci", team: "eCall", shiftIn: "22:35", shiftOut: "06:00" },
-	{ name: "Waldeci", team: "eCall", shiftIn: "22:35", shiftOut: "06:00" },
-	{ name: "Waldeci", team: "eCall", shiftIn: "22:35", shiftOut: "06:00" },
-	{ name: "Waldeci", team: "eCall", shiftIn: "22:35", shiftOut: "06:00" },
-	{ name: "Waldeci", team: "eCall", shiftIn: "22:35", shiftOut: "06:00" },
-	{ name: "Waldeci", team: "eCall", shiftIn: "22:35", shiftOut: "06:00" },
-	{ name: "Waldeci", team: "eCall", shiftIn: "22:35", shiftOut: "06:00" },
-	{ name: "Waldeci", team: "eCall", shiftIn: "22:35", shiftOut: "06:00" },
-	{ name: "Waldeci", team: "eCall", shiftIn: "22:35", shiftOut: "06:00" },
-	{ name: "Waldeci", team: "eCall", shiftIn: "22:35", shiftOut: "06:00" },
-	{ name: "Waldeci", team: "eCall", shiftIn: "22:35", shiftOut: "06:00" },
+const workers: Worker[] = [
+	{ edv: "51590", name: "Waldeci", team: "eCall", shiftIn: "22:35", shiftOut: "06:00" },
+	{ edv: "52950", name: "Maria", team: "eCall", shiftIn: "22:35", shiftOut: "06:00" },
+	{ edv: "53950", name: "João", team: "eCall", shiftIn: "22:35", shiftOut: "06:00" },
+	{ edv: "54950", name: "Ana", team: "eCall", shiftIn: "22:35", shiftOut: "06:00" },
+	{ edv: "55550", name: "Carlos", team: "eCall", shiftIn: "22:35", shiftOut: "06:00" },
+	{ edv: "53650", name: "Fernanda", team: "eCall", shiftIn: "22:35", shiftOut: "06:00" },
+	{ edv: "57450", name: "Pedro", team: "eCall", shiftIn: "22:35", shiftOut: "06:00" },
+	{ edv: "54850", name: "Juliana", team: "eCall", shiftIn: "22:35", shiftOut: "06:00" },
+	{ edv: "53950", name: "Roberto", team: "eCall", shiftIn: "22:35", shiftOut: "06:00" },
+	{ edv: "51750", name: "Camila", team: "eCall", shiftIn: "22:35", shiftOut: "06:00" },
+	{ edv: "56150", name: "Lucas", team: "eCall", shiftIn: "22:35", shiftOut: "06:00" },
 ];
 
 export function Dashboard() {

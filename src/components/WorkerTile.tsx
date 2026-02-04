@@ -1,10 +1,7 @@
+import type { Worker } from "../types/Worker";
+
 interface WorkerTileProps {
-  worker: {
-    name: string;
-    team: "eCall" | "RSA";
-    shiftIn: string;
-    shiftOut: string;
-  }
+  worker: Worker;
 }
 
 const bgColors = ["bg-blue-100", "bg-green-100", "bg-yellow-100", "bg-red-100", "bg-purple-100", "bg-pink-100"];
@@ -32,8 +29,8 @@ export function WorkerTile(props: WorkerTileProps) {
 
       <span className="flex  items-center justify-between w-full">
         <div>
-          <p className="font-bold text-slate-900">{props.worker.name}</p>
-          <p className="text-sm text-slate-500">{props.worker.team}</p>
+          <p className="font-bold text-slate-800">{props.worker.name}</p>
+          <p className="text-xs text-slate-500">edv: {props.worker.edv}</p>
         </div>
 
         <p className={`

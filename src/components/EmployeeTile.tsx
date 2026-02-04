@@ -1,13 +1,13 @@
-import type { Worker } from "../types/Worker";
+import type { Employee } from "../types/Employee";
 
-interface WorkerTileProps {
-  worker: Worker;
+interface EmployeeTileProps {
+  employee: Employee;
 }
 
 const bgColors = ["bg-blue-100", "bg-green-100", "bg-yellow-100", "bg-red-100", "bg-purple-100", "bg-pink-100"];
 const textColors = ["text-blue-700", "text-green-700", "text-yellow-700", "text-red-700", "text-purple-700", "text-pink-700"];
 
-export function WorkerTile(props: WorkerTileProps) {
+export function EmployeeTile(props: EmployeeTileProps) {
   const selectedBackground = bgColors[Math.floor(Math.random() * bgColors.length)];
   const selectedTextColor = textColors[Math.floor(Math.random() * textColors.length)];
 
@@ -25,18 +25,18 @@ export function WorkerTile(props: WorkerTileProps) {
         rounded-full uppercase
         flex items-center justify-center  
         `}
-      >{props.worker.name.substring(0, 2)}</span>
+      >{props.employee.name.substring(0, 2)}</span>
 
       <span className="flex  items-center justify-between w-full">
         <div>
-          <p className="font-bold text-slate-800">{props.worker.name}</p>
-          <p className="text-xs text-slate-500">edv: {props.worker.edv}</p>
+          <p className="font-bold text-slate-800">{props.employee.name}</p>
+          <p className="text-xs text-slate-500">edv: {props.employee.edv}</p>
         </div>
 
         <p className={`
            px-3 py-1 rounded-sm text-xs ${selectedTextColor}
            ${selectedBackground}
-          `}>{props.worker.shiftIn} - {props.worker.shiftOut}</p>
+          `}>{props.employee.shiftIn} - {props.employee.shiftOut}</p>
 
       </span>
     </div>

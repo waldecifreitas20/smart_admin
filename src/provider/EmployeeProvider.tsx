@@ -6,14 +6,15 @@ export const EmployeeContext = createContext({
   setDayOff: (_employee: Employee, _dayOff: Date) => { },
   employees: [] as Employee[],
   getEmployeeByTeam: (_team: EmployeeTeam) => [] as Employee[],
+  generateSchedule: (_startDate: Date, _team: EmployeeTeam) => [] as Employee[],
 });
 
 
 export function EmployeeProvider(props: PropsWithChildren) {
-  const [employeesState, setEmployeesState] = useState<Employee[]>(EMPLOYEES);
+  const [employees, setEmployees] = useState<Employee[]>(EMPLOYEES);
 
   function setDayOff(employee: Employee, dayOff: Date) {
-    setEmployeesState(prev => {
+    setEmployees(prev => {
       return prev.map(emp => {
         if (emp.edv === employee.edv) {
           return { ...emp, daysOff: [...emp.daysOff, dayOff] };
@@ -27,14 +28,23 @@ export function EmployeeProvider(props: PropsWithChildren) {
 
 
   function getEmployeeByTeam(team: EmployeeTeam) {
-    return employeesState.filter(emp => emp.team === team);
+    return employees.filter(emp => emp.team === team);
+  }
+
+  	function generateSchedule(startDate: Date, team: EmployeeTeam) {
+		const schedule: Employee[] = [];
+
+    const teamEmployees = getEmployeeByTeam(team);
+    
+    return teamEmployees;
   }
 
   return (
     <EmployeeContext.Provider value={{
       setDayOff,
-      employees: [...employeesState],
+      employees: [...employees],
       getEmployeeByTeam,
+      generateSchedule
     }}>
       {props.children}
     </EmployeeContext.Provider>

@@ -1,10 +1,13 @@
 import type { PropsWithChildren } from "react";
 
-interface PrimaryButtonProps extends PropsWithChildren { }
+interface PrimaryButtonProps extends PropsWithChildren {
+  onClick: () => void;
+}
 
 export function PrimaryButton(props: PrimaryButtonProps) {
   return (
     <button
+      onClick={() => props.onClick()}
       className="
       bg-purple-600 
       flex items-center justify-center 

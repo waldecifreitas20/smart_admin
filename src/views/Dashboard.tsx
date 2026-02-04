@@ -6,7 +6,7 @@ import { DayController } from "../components/DayController";
 import { useContext, useRef, useState } from "react";
 import { EmployeesList } from "../components/EmployeesList";
 import { EmployeeContext } from "../provider/EmployeeProvider";
-import type { EmployeeTeam } from "../types/Employee";
+import type { Employee, EmployeeTeam } from "../types/Employee";
 
 
 const dashboardStats = [
@@ -16,14 +16,14 @@ const dashboardStats = [
 ];
 
 export function Dashboard() {
-	const { getEmployeeByTeam } = useContext(EmployeeContext);
+	const { getEmployeeByTeam, setDayOff } = useContext(EmployeeContext);
 	const [selectedTeam, setSelectedTeam] = useState<EmployeeTeam>("eCall");
 
 	const initialDate = useRef(new Date(2026, 1, 1));
 	const [selectedDate, setSelectedDate] = useState(initialDate.current);
 
 	function generateSchedule(startDate: Date) {
-
+		const schedule: Employee[] = [];
 	}
 
 	function handleSelectTeam(team: EmployeeTeam) {

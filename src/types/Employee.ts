@@ -11,5 +11,5 @@ export type Employee = {
   team: EmployeeTeam;
   shiftIn: string;
   shiftOut:string;
-  lastDayOff: Date;
+  daysOff: Date[];
 }

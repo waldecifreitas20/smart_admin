@@ -7,6 +7,7 @@ import { DayController } from "../components/DayController";
 import { useRef, useState } from "react";
 import { WorkerTile } from "../components/WorkerTile";
 import type { Worker } from "../types/Worker";
+import { WeekController } from "../components/WeekController";
 
 
 const workers: Worker[] = [
@@ -56,10 +57,9 @@ export function Dashboard() {
 			</div>
 
 			<div className="mt-10 mb-6">
-				<DayController startDate={selectedDate} onSelectDate={setSelectedDate} />
+				<WeekController />
 			</div>
 
-			<TeamSelector />
 
 			<div className="flex gap-2 mt-6">
 				<PrimaryButton>
@@ -73,6 +73,8 @@ export function Dashboard() {
 			<p className="text-sm text-slate-400 mt-10 font-semibold">
 				EQUIPE EM {selectedDate.toLocaleDateString("pt-BR", { day: "numeric", month: "numeric" })}
 			</p>
+			
+			<TeamSelector />
 
 			<div className="flex flex-col gap-4 mt-2">
 				{workers.map((worker, index) => (
